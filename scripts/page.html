@@ -4,33 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$pagetitle$</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
 <link rel="stylesheet" href="assets/styles/docs.css">
-$if(highlighting-css)$
-<style>$highlighting-css$</style>
-$endif$
+<script src="assets/scripts/theme.js"></script>
 </head>
 <body>
-<header class="container page-header">
-<h1>$title$</h1>
-<nav aria-label="Dokumentaktionen"><ul>
-<li><a href="dokumentation.pdf" role="button" class="outline" download>PDF herunterladen</a></li>
-<li><a href="$edit-index-url$" role="button" class="secondary outline">Titel bearbeiten</a></li>
-</ul></nav>
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
+<header class="site-header">
+<a class="brand" href="index.html">$site-title$</a>
+<button type="button" id="theme-toggle" hidden>Dark Mode</button>
 </header>
-<div class="container docs-layout">
-$if(toc)$
-<aside class="contents">
-<nav aria-label="Inhaltsverzeichnis">
-<h2>Inhaltsverzeichnis</h2>
-$table-of-contents$
-</nav>
+<div class="layout">
+<aside class="sidebar">
+<nav aria-label="Kapitel">$navigation$</nav>
+<a class="button pdf" href="dokumentation.pdf" download>Als PDF herunterladen</a>
 </aside>
-$endif$
 <main id="inhalt">
+<div class="actions"><a class="button" href="$edit-url$"><span aria-hidden="true">✎</span> Bearbeiten</a></div>
 $body$
 </main>
+$if(toc)$
+<aside class="page-contents"><nav aria-label="Auf dieser Seite"><h2>Auf dieser Seite</h2>$table-of-contents$</nav></aside>
+$endif$
 </div>
-<footer class="container"><small>Dokumentation aus Markdown · Bearbeiten öffnet die Quelldatei auf GitHub.</small></footer>
 </body>
 </html>

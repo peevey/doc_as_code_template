@@ -76,9 +76,9 @@ Die explizite Ankersyntax ist eine Pandoc-Erweiterung und wird in der
 GitHub-Vorschau nicht gleich dargestellt. Abschnittslinks ersetzen keine
 Querverweise mit automatisch eingefügten Abschnittsnummern.
 
-Alle Kapitel werden zu einer HTML-Seite und einem PDF zusammengeführt.
-Für Verweise zwischen Kapiteln daher Abschnittsanker verwenden; Links auf
-`kap1.md` werden beim Export nicht automatisch auf HTML umgeschrieben.
+Jede Markdown-Datei wird als eigene HTML-Seite dargestellt. Links auf
+`kap1.md` werden für HTML auf `kap1.html` umgesetzt. Alle Kapitel werden
+weiterhin zu einem PDF zusammengeführt; dort Abschnittsanker verwenden.
 
 ## Bilder
 
@@ -189,6 +189,6 @@ bash scripts/build.sh
 ```
 
 Anschließend `_site/index.html` und `_site/dokumentation.pdf` öffnen.
-Das Pico-CSS-Theme und die GitHub-Edit-Links gelten für die HTML-Seite.
+Das eigene CSS-Theme und die GitHub-Edit-Links gelten für die HTML-Seiten.
 Das PDF hat ein eigenes Layout. Rohes HTML ist deshalb kein verlässlicher Weg,
 um Inhalte für beide Ausgabeformate zu gestalten.
