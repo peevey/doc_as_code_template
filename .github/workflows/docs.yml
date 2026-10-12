@@ -1,0 +1,62 @@
+name: Dokumentation bauen und veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Ruby einrichten
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Asciidoctor und PDF-Konverter installieren
+        run: |
+          gem install asciidoctor --version 2.0.26 --no-document
+          gem install asciidoctor-pdf --version 2.3.24 --no-document
+          gem install rouge --version 4.6.1 --no-document
+
+      - name: HTML und PDF erzeugen
+        run: bash scripts/build.sh
+
+      - name: PDF als Build-Artefakt bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: dokumentation-pdf
+          path: _site/dokumentation.pdf
+          if-no-files-found: error
+
+      - name: GitHub Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      - name: Website für Veröffentlichung hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
