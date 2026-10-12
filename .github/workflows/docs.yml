@@ -21,16 +21,10 @@ jobs:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
-      - name: Ruby einrichten
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-
-      - name: Asciidoctor und PDF-Konverter installieren
+      - name: Pandoc und PDF-Werkzeuge installieren
         run: |
-          gem install asciidoctor --version 2.0.26 --no-document
-          gem install asciidoctor-pdf --version 2.3.24 --no-document
-          gem install rouge --version 4.6.1 --no-document
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
 
       - name: HTML und PDF erzeugen
         run: bash scripts/build.sh
