@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="$lang$">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$pagetitle$</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+<link rel="stylesheet" href="assets/styles/docs.css">
+$if(highlighting-css)$
+<style>$highlighting-css$</style>
+$endif$
+</head>
+<body>
+<header class="container page-header">
+<h1>$title$</h1>
+<nav aria-label="Dokumentaktionen"><ul>
+<li><a href="dokumentation.pdf" role="button" class="outline" download>PDF herunterladen</a></li>
+<li><a href="$edit-index-url$" role="button" class="secondary outline">Titel bearbeiten</a></li>
+</ul></nav>
+</header>
+<div class="container docs-layout">
+$if(toc)$
+<aside class="contents">
+<nav aria-label="Inhaltsverzeichnis">
+<h2>Inhaltsverzeichnis</h2>
+$table-of-contents$
+</nav>
+</aside>
+$endif$
+<main id="inhalt">
+$body$
+</main>
+</div>
+<footer class="container"><small>Dokumentation aus Markdown · Bearbeiten öffnet die Quelldatei auf GitHub.</small></footer>
+</body>
+</html>

@@ -49,3 +49,23 @@ Der PDF-Download wird nur in HTML eingefügt.
 In den Repository-Einstellungen unter **Pages → Build and deployment** die
 Quelle **GitHub Actions** auswählen. Pushes auf `main` und manuelle Workflow-Starts
 bauen und veröffentlichen die Dokumentation.
+
+## HTML-Theme und Bearbeiten-Links
+
+Die Website verwendet Pico CSS 2.1.1 über jsDelivr und ein responsives
+Inhaltsverzeichnis (am Desktop seitlich, auf kleinen Bildschirmen vor dem Inhalt).
+Zum Laden des Pico-Themes benötigen Besucher eine Internetverbindung.
+Eigene Anpassungen stehen in `assets/styles/docs.css`, das HTML-Layout in
+`scripts/page.html`. Der PDF-Export verwendet weiterhin sein separates Layout.
+
+Jedes Kapitel erhält einen **Kapitel bearbeiten**-Link zur passenden Markdown-Datei
+im GitHub-Webeditor. **Titel bearbeiten** öffnet `pages/index.md`.
+GitHub benötigt zum Speichern eine Anmeldung und entsprechende Berechtigungen;
+je nach Berechtigung entsteht stattdessen ein Änderungsvorschlag über einen Fork.
+
+In GitHub Actions wird das Zielrepository automatisch aus `GITHUB_REPOSITORY`
+übernommen. Lokal kann es explizit gesetzt werden:
+
+```bash
+GITHUB_REPOSITORY=mein-account/meine-dokumentation DOCS_EDIT_BRANCH=main bash scripts/build.sh
+```
