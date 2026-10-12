@@ -6,6 +6,8 @@ und stellt das PDF zusätzlich als Build-Artefakt bereit.
 
 ## Dokumentation bearbeiten
 
+Syntax und Beispiele stehen im [Markdown-Cheat-Sheet](MARKDOWN-CHEAT-SHEET.md).
+
 - `pages/index.md`: Titel und Sprache als YAML-Metadaten.
 - `pages/kap1.md`: Beispielkapitel; weitere Kapitel als `.md` in `pages/` ergänzen.
 - `assets/images/`: Bilder für HTML und PDF.
