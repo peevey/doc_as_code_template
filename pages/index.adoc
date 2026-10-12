@@ -1,0 +1,17 @@
+= Technische Dokumentation
+:lang: de
+:toc:
+:toc-title: Inhaltsverzeichnis
+:toclevels: 3
+:sectnums:
+:icons: font
+:source-highlighter: rouge
+:imagesdir: ../assets/images
+
+ifdef::backend-html5[]
+ifdef::pdf-download[]
+link:{pdf-download}[Dokumentation als PDF herunterladen]
+endif::[]
+endif::[]
+
+include::kap1.adoc[]
