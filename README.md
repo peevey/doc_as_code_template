@@ -32,7 +32,7 @@ Unter Debian/Ubuntu die Werkzeuge installieren:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
+sudo apt-get install -y --no-install-recommends pandoc lmodern texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
 bash scripts/build.sh
 ```
 
