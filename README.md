@@ -32,7 +32,7 @@ Unter Debian/Ubuntu die Werkzeuge installieren:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
+sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
 bash scripts/build.sh
 ```
 
@@ -69,3 +69,7 @@ In GitHub Actions wird das Zielrepository automatisch aus `GITHUB_REPOSITORY`
 ```bash
 GITHUB_REPOSITORY=mein-account/meine-dokumentation DOCS_EDIT_BRANCH=main bash scripts/build.sh
 ```
+
+Neue Veröffentlichungen lösen veraltete Workflow-Läufe ab. Der Build ist auf
+15 Minuten begrenzt, die Werkzeuginstallation auf 10 Minuten. Die Installation
+verzichtet auf empfohlene Zusatzpakete und begrenzt Netzwerk-Wartezeiten.

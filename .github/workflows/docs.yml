@@ -12,19 +12,21 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
       - name: Pandoc und PDF-Werkzeuge installieren
+        timeout-minutes: 10
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install -y --no-install-recommends pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
 
       - name: HTML und PDF erzeugen
         run: bash scripts/build.sh
